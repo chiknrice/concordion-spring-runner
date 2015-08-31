@@ -1,0 +1,20 @@
+language: java
+
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+
+branches:
+  only:
+    - master
+    - /^v[0-9]+\.[0-9]+\.[0-9]+/
+
+env:
+  global: #TODO change this to proper secure tokens
+    - secure: jVQ+uNblOMstwMOdf1Qj0379cFJ9Rw17G8b2PU9VqPaZJ3AFz4BLWGdorFfzjphzOOdFKuD5JNTSF1RN6GutcJaB1uwJjmrCbvp5KySRQAfhTN/2Q0w8K5WT6xh0Bk3sItp9QZyeg+AnXpbyrEhMPm1xCDojfiyoSL1WtnTXHPg1oL4Wz5PQIXDfduT+hP3h7VCdsUYBgN6da8cjjf/Ixfz2IaZDpcxW0xkaS34qtecS0xA+tmTlO0lJY5vuISPKP1rwUbmaPqqcNgtN5J+P8qZd9xkY4gDUckWxkFeCRGP+NpyAWe1k/eWWMf3P4wsl2lOBAnOLXH/EFxuidSWX9bR+b+ENVNq6shMqFtyAvu0K2lCwBQFaizXqkPt06W3NuMi9lFHNQa1PJgiNaeA6zALT4K3AxGavx1GmfxZekVjWi9pikVS2p3HwDC8lFd/WPXoNmnufc7ogK0EkH/q6rOn4wvKKqkN4hnP5hL2KopoDOmRu2/WOcwtZDPgN6aghhmUtPHHFVWkRSrilUInDGDzvfYVd2XMPo9CX68tlrx5M1Dq1ye+eD7inB6IoWM00p23l75RaX+dpdqrKho6erPK6WVQbQYHn99P5ffjF5FfkmplVOaO8EL1dpz2lgvsNKXxM7/jr6k/iZOlHZ9qWun0ifkxg/md8hktUkjedxjY=
+    - secure: cLBwtaodn5qTHo9aPjIplL8YLjylwlwuufSu+2SXS0+4iV9ezoJNZ3yDuq7CNhT8Ps+4NVarHZTPN8NQjmGFeBnJ11c4CvmM80Pydz/dC7DRAOZYdX+dkcB+cGimk/0CysWBzy31UQeOYowESAkzn3K99/68yj0kFPvT72eioMqtbvYQ9LAre80XSA7QZPn5suh1lN27nEFK7je6/hc6bqZn+sVw29QA0J5Yn8epCRzfxlwyZPyw4QLL/zBzw4RBYr+KZc5AOlbt2Asbe2kpuxtuHge7WqyWKTRVudC1cS5d0bHUaikWVos/Mjg8bIG08CQGWkk9E28xEH+PVv6qDZvLQHY+jDl74E0NsuDV5voeBY4wtZAUTiGxxcM3QH02+7+1vdJ8HWvbfAoC6XcDbetdhUrRZPjf5WZNXvzzx7mImS3FY2GCclOz5M2j/su4O+xNAOblNxs95zIdkV9B32/r5RkreQ4HCqE9j+QtADRv7U/GsGsC3jUELSQhQc1ffYtYq1lR3Pxoikx0ZwuvMiGQ+KVDTKETYd6qbMl66yX7ZaIiO5i36MwlYBt/RYQoEgp1qA0vLy3N/m+KbD8xgM/Zw6KcA3+EEHXfEpL+6QIRujlMFtsJPqHBJwkQO62EJss2BqzaI3VlAeDLmlgRngxFObT0m0kvTBiDlcdXVUA=
+    - secure: h6mXZp1DI5SPxlppdekXvYVz9m38ROVSWvhptC4NvlAbEgdh4o7hRM8H2LMeR2ih2ssw1XPm4Ghd+W03XV476um75Bk5KgTseWbjGSzrssOF0oLVW9z/j3lYHYkE8l7cst1HrOUExfNLSu10w1cPtWEOLNu3/IPX+UMyclKOwC/ozP+z7+WFqhg49/GAJbXwZZs4dmgo9czPca9P/eL0XzIeeCWhqufmW7ErUYKZhbaSxS0d51yat42EDXhrc8+WI94knAVuEvxeVA/9Fv71Fb6g3T2CSgzcM46oMNuNc5IvXjblE2VOygTg7g9M64GN1QyrH7SZKnUYFmeOwYDdBVGhyQ0uGWgCrI3+uSIx5+kX7kdVnXHmJcN9EhGqt374QHcMF7Vlt5Etq2OigWqEyJo3pjNYG3uHReHLaTiUvLwmRXrtrEufO+GtDmRrgMh4nZYOmraxxnrH6YjkFsukDzb3OhTrNaQBx7PuQWzsSXwyU3Q8g0HUIg2KHvRHB0rGhMqFoXeil6cbG/VJMLN4hFxwFMnXrHWu1cQZzbhLL8rWn1ArmkwiiyIFe58yEDJbsTHsIZOTehuax6QQBgZpIxlslYk2IBAYD8qCAEsybz0ovYF/lGXwsTj1U+NI0Hn46tj1shPrM3Tr2WUHmK9IswSaBt2dyB6GqkLvw0twsVY=
+
+after_success:
+  - test "${TRAVIS_JDK_VERSION}" == "oraclejdk7" && ./gradlew jacocoTestReport coveralls
+  - test "${TRAVIS_TAG}" != "" && test "${TRAVIS_JDK_VERSION}" == "oraclejdk7" && ./gradlew bintrayUpload
