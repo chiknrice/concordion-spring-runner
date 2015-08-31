@@ -1,2 +1,3 @@
 # concordion-spring-runner
+[![Build Status](https://travis-ci.org/chiknrice/concordion-spring-runner.svg?branch=master)](https://travis-ci.org/chiknrice/concordion-spring-runner) [![Coverage Status](https://coveralls.io/repos/chiknrice/concordion-spring-runner/badge.svg?branch=master&service=github)](https://coveralls.io/github/chiknrice/concordion-spring-runner?branch=master) [ ![Download](https://api.bintray.com/packages/chiknrice/maven/concordion-spring-runner/images/download.svg) ](https://bintray.com/chiknrice/maven/concordion-spring-runner/_latestVersion)
 A ConcordionRunner fused with SpringJUnit4ClassRunner
