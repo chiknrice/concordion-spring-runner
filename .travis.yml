@@ -2,7 +2,6 @@ language: java
 
 jdk:
   - oraclejdk8
-  - openjdk7
 
 branches:
   only:
@@ -15,5 +14,5 @@ env:
     - secure: ouWmRjPdq6mdXYG628aSZSw4zcsqu10eXGij32SfN5KOVCnEpzlsHFbP5tKN+8dxWKl0gvmNT9lB7Hm4QhsieOIic8ykuVlxtUBiUdkSvoo+GHvorXhdSCW4gtJ4Ac8DzPgFGDPPJT5/HBR7+SuNaGKtWz4pu7Jl7XbEe7a+4xuAAI53aeX9mnvN4g7Sh26ZgNnRAsy8MMRU0ntBvIjw7Zgl6LJKBj8cO1AzTTlrtKd0U31IR/Gdloc6t3z/UJv/u/UbSh9uc14CdSBP0f/gLfR4ZcE2EOaGu9vd+wmQDUlJ95QRf94UkA9mqNCahJvwr2IWlS2byIPrWIrHXZayBHHf+19I7ERISJE8LwMAUpXPkNWxRae+DKUUfUtlCEK4LIfJHKLTOqlV3GN80VlatBK8LWPP+nVUY5udfcGV6sev6vyHyTXY+gHZuXofNyPy3FfLIkdtZMJC6JPMXtjR0b++5HK5bB0NT0h0LdI7oHuZ9pT1PCOrUU1GyRvcu4VIIFFlD1C2iArLBQjJYTzEO3+VbEm92GxkfFGR/N5KdvryBZ4V+I+n+cXXxjiSM8H4Qh7f7+asf5HEk2TtqB8Tlry0cJymeMbxiR+Iw3hXm2AWZ/MS2/WjxkeoxdK4/iaW2o+FrikM1FEOhoPu4Z8EPI8r6R9Q8T98tDxtamM68MQ=
 
 after_success:
-  - test "${TRAVIS_JDK_VERSION}" == "openjdk7" && ./gradlew jacocoTestReport coveralls
-  - test "${TRAVIS_TAG}" != "" && test "${TRAVIS_JDK_VERSION}" == "openjdk7" && ./gradlew bintrayUpload
+  - test "${TRAVIS_JDK_VERSION}" == "oraclejdk8" && ./gradlew jacocoTestReport coveralls
+  - test "${TRAVIS_TAG}" != "" && test "${TRAVIS_JDK_VERSION}" == "oraclejdk8" && ./gradlew bintrayUpload
