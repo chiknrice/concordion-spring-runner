@@ -1,3 +1,5 @@
 # concordion-spring-runner
 [![Build Status](https://travis-ci.org/chiknrice/concordion-spring-runner.svg?branch=master)](https://travis-ci.org/chiknrice/concordion-spring-runner) [![Coverage Status](https://coveralls.io/repos/chiknrice/concordion-spring-runner/badge.svg?branch=master&service=github)](https://coveralls.io/github/chiknrice/concordion-spring-runner?branch=master) [ ![Download](https://api.bintray.com/packages/chiknrice/maven/concordion-spring-runner/images/download.svg) ](https://bintray.com/chiknrice/maven/concordion-spring-runner/_latestVersion)
 A ConcordionRunner fused with SpringJUnit4ClassRunner
+
+**Note that since Spring 4.2 there's already a [SpringClassRule](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/junit4/rules/SpringClassRule.html) and [SpringMethodRule](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/junit4/rules/SpringMethodRule.html) that does a better job so make sure to check them out first before you decide to use this runner.**
